@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_countup/provider.dart';
+
 import 'data/count_data.dart';
 
 void main() {
@@ -85,10 +86,16 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: const [
                 Text(
-                  ref.watch(countDataProvider).countUp.toString(),
+                  ref
+                      .watch(countDataProvider
+                          .select((value) => value.state.countUp))
+                      .toString(),
                 ),
                 Text(
-                  ref.watch(countDataProvider).countDown.toString(),
+                  ref
+                      .watch(countDataProvider
+                          .select((value) => value.state.countDown))
+                      .toString(),
                 )
               ],
             ),
@@ -97,7 +104,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(countDataProvider.state).state = CountData(
+          ref.read(countDataProvider.state).state = const CountData(
             count: 0,
             countUp: 0,
             countDown: 0,
