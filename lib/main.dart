@@ -38,6 +38,7 @@ class MyHomePage extends ConsumerStatefulWidget {
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
   final ViewModel _viewModel = ViewModel();
+
   @override
   void initState() {
     super.initState();
@@ -95,7 +96,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  _viewModel.countUp(),
+                  _viewModel.countUp,
                 ),
                 Text(
                   _viewModel.countDown,
