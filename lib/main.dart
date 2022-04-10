@@ -37,7 +37,7 @@ class MyHomePage extends ConsumerStatefulWidget {
 }
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
-  ViewModel _viewModel = ViewModel();
+  final ViewModel _viewModel = ViewModel();
   @override
   void initState() {
     super.initState();
@@ -93,19 +93,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
+              children: [
                 Text(
-                  ref
-                      .watch(countDataProvider
-                          .select((value) => value.state.countUp))
-                      .toString(),
+                  _viewModel.countUp(),
                 ),
                 Text(
-                  ref
-                      .watch(countDataProvider
-                          .select((value) => value.state.countDown))
-                      .toString(),
-                )
+                  _viewModel.countDown,
+                ),
               ],
             ),
           ],
